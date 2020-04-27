@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie.es</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <style>
+    body {
+            margin: 0;
+            font-family: Arial;
+        }
+        
+        .header {
+            color: black;
+            padding: 10px;
+            display: grid;
+            grid-template-columns: minmax(auto, 1024px);
+            justify-content: center;
+            align-content: center;
+        }
+        
+        .header-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 10px;
+        }
+        
+        .logo-container {
+            width: 200px;
+            height: 45px;
+            margin: 5px;
+            position: relative;
+        }
+        
+        .logo img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .form {
+            text-align: center;
+            background: rgba(255, 255, 255, .9);
+            padding: .5em;
+            border-radius: 10px;
+        }
+        
+        .form input {
+            width: 100%;
+            padding: 10px;
+            font-size: 12px;
+            border: 1px solid #dbdbe2;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        
+        .insignia-container {
+            display: flex;
+            margin-left: auto;
+        }
+        
+        .insignia {
+            display: inherit;
+        }
+        
+        .insignia p {
+            width: auto;
+            font-family: 'Ubuntu', sans-serif;
+        }
+        
+        .insignia img {
+            width: 25px%;
+            height: 50px;
+        }
+        
+        @font-face {
+            font-family: 'icomoon';
+            src: url('fonts/icomoon.eot?jhzarr');
+            src: url('fonts/icomoon.eot?jhzarr#iefix') format('embedded-opentype'), url('fonts/icomoon.ttf?jhzarr') format('truetype'), url('fonts/icomoon.woff?jhzarr') format('woff'), url('fonts/icomoon.svg?jhzarr#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            font-display: block;
+        }
+        
+        [class^="icon-"],
+        [class*=" icon-"] {
+            /* use !important to prevent issues with browser extensions that change fonts */
+            font-family: 'icomoon' !important;
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            /* Better Font Rendering =========== */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .icon-cog:before {
+            content: "\e900";
+        }
+        
+        .icon-gear:before {
+            content: "\e900";
+        }
+        
+        .icon-preferences:before {
+            content: "\e900";
+        }
+        
+        .icon-settings:before {
+            content: "\e900";
+        }
+        
+        .icon-generate:before {
+            content: "\e900";
+        }
+        
+        .icon-control:before {
+            content: "\e900";
+        }
+        
+        .icon-options:before {
+            content: "\e900";
+        }
+        
+        .icon-heart:before {
+            content: "\e901";
+        }
+        
+        .icon-like:before {
+            content: "\e901";
+        }
+        
+        .icon-love:before {
+            content: "\e901";
+        }
+        
+        .icon-favorite:before {
+            content: "\e901";
+        }
+        
+        .icon-fire:before {
+            content: "\e902";
+        }
+        
+        .icon-flame:before {
+            content: "\e902";
+        }
+        
+        .icon-hot:before {
+            content: "\e902";
+        }
+        
+        .icon-popular:before {
+            content: "\e902";
+        }
+        
+        .icon-home:before {
+            content: "\e903";
+        }
+        
+        .icon-house:before {
+            content: "\e903";
+        }
+        
+        .body {
+            padding: 10px;
+            display: grid;
+            grid-template-columns: minmax(auto, 1024px);
+            justify-content: center;
+            align-content: center;
+        }
+        
+        .body-container {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-gap: 30px;
+            border-top: 5px solid #e6e6e6;
+        }
+        
+        .hot-suite {
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr 70%;
+            background: #dc5a5a;
+            padding: 5px;
+        }
+        
+        .icon-home {
+            color: white;
+            text-align: center;
+            width: 100%;
+            margin: 0;
+        }
+        
+        .icon-home p {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: small;
+            text-align: center;
+        }
+        
+        .icon-fire {
+            color: white;
+            text-align: center;
+            width: 100%;
+            margin: 0;
+        }
+        
+        .icon-fire p {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: small;
+            text-align: center;
+        }
+        
+        .icon-love {
+            color: white;
+            text-align: center;
+            width: 100%;
+            margin: 0;
+        }
+        
+        .icon-love p {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: small;
+            text-align: center;
+        }
+        
+        .icon-settings {
+            color: white;
+            text-align: center;
+            width: 100%;
+            margin: 0;
+            margin-top: auto;
+        }
+        
+        .icon-settings p {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: small;
+            text-align: center;
+        }
+        
+        .postlist {
+            padding: 10px;
+            display: grid;
+            grid-gap: 25px;
+        }
+        
+        .postlist-container {
+            display: grid;
+            grid-template: 25px 1fr 25px 1fr 25px 1fr / 1fr 1fr 1fr;
+            justify-content: center;
+            height: 100vh;
+            grid-gap: 35px;
+            grid-template-areas: "header header header" "mov1 mov2 mov3" "header2 header2 header2" "mov4 mov5 mov6" "header3 header3 header3" "mov7 mov8 mov9";
+        }
+        
+        .title {
+            font-family: 'Ubuntu', sans-serif;
+        }
+        
+        .title.one {
+            grid-area: header;
+        }
+        
+        .title.two {
+            grid-area: header2;
+        }
+        
+        .title.three {
+            grid-area: header3;
+        }
+        
+        .post {
+            cursor: pointer;
+            position: relative;
+            display: block;
+        }
+        
+        .post.one {
+            grid-area: mov1;
+        }
+        
+        .post.two {
+            grid-area: mov2;
+        }
+        
+        .post.three {
+            grid-area: mov3;
+        }
+        
+        .post.four {
+            grid-area: mov4;
+        }
+        
+        .post.five {
+            grid-area: mov5;
+        }
+        
+        .post.six {
+            grid-area: mov6;
+        }
+        
+        .post.seven {
+            grid-area: mov7;
+        }
+        
+        .post.eigth {
+            grid-area: mov8;
+        }
+        
+        .post.nine {
+            grid-area: mov9;
+        }
+        
+        .post-image {
+            margin: 0;
+        }
+        
+        .post-image img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            vertical-align: top;
+        }
+        
+        .post-overlay {
+            background: rgba(0, 0, 0, .4);
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .post:hover .post-overlay {
+            display: flex;
+        }
+        
+        .post-title {
+            width: 100%;
+            margin: 5px;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .post-description {
+            font-size: small;
+            width: 90%;
+            margin: 5px;
+            display: block;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .post-list {
+                grid-gap: 3px;
+            }
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <section class="header">
+        <section class="header-container">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="https://i.imgur.com/4F7f6Iq.png" alt="">
+                </div>
+            </div>
+            <form action="" class="form">
+                <div class="form-container">
+                    <input type="text" placeholder="Busca tu peli, actor, actriz o director favorito">
+                </div>
+            </form>
+            <div class="insignia-container">
+                <div class="insignia">
+                    <p>Manuel Peche</p>
+                    <img src="https://i.imgur.com/Ybr8UFr.jpg" alt="">
+                </div>
+            </div>
+        </section>
+    </section>
+    <section class="body">
+        <section class="body-container">
+            <section class="hot-suite">
+                <figure class="icon-home">
+                    <img src="" alt="">
+                    <p>Home</p>
+                </figure>
+                <figure class="icon-fire">
+                    <img src="" alt="">
+                    <p>Trending</p>
+                </figure>
+                <figure class="icon-love">
+                    <img src="" alt="">
+                    <p>Más Likes</p>
+                </figure>
+                <figure class="icon-settings">
+                    <img src="" alt="">
+                    <p>Ajustes</p>
+                </figure>
+            </section>
+            <section class="postlist">
+                <section class="postlist-container">
+                    <div class="title one">
+                        <h1>Ahora en el Cine</h1>
+                    </div>
+                    <a href="" class="post one">
+                        <figure class="post-image">
+                            <img src="https://i.imgur.com/dyle21y.jpg" alt="">
+                        </figure>
+                        <span class="post-overlay">
+                            <p>
+                                <span class="post-title">Sonic</span>
+                        <span class="post-description">Después de descubrir a un increíblemente veloz erizo azul, un oficial de policía de un pequeño pueblo debe ayudarlo a derrotar a un genio malvado que quiere capturarlo para experimentar con él. Basada en el videojuego.</span>
+                        </p>
+                        </span>
+                    </a>
+                    <a href="" class="post two">
+                        <figure class="post-image">
+                            <img src="https://i.imgur.com/nxh2zu8.jpg" alt="">
+                        </figure>
+                        <span class="post-overlay">
+                            <p>
+                                <span class="post-likes">150</span>
+                        <span class="post-comments">10</span>
+                        </p>
+                        </span>
+                    </a>
+                    <a href="" class="post three">
+                        <figure class="post-image">
+                            <img src="https://i.imgur.com/QOifU9i.jpg" alt="">
+                        </figure>
+                        <span class="post-overlay">
+                            <p>
+                                <span class="post-likes">150</span>
+                        <span class="post-comments">10</span>
+                        </p>
+                        </span>
+                    </a>
+                    <div class="title two">
+                        <h1>Aclamadas por la critica</h1>
+                    </div>
+                    <a href="" class="post four">
+                        <figure class="post-image">
+                            <img src="https://i.imgur.com/paW415p.jpg" alt="">
+                        </figure>
+                        <span class="post-overlay">
+                            <p>
+                                <span class="post-likes">150</span>
+                        <span class="post-comments">10</span>
+                        </p>
+                        </span>
+                    </a>
+                    <a href="" class="post five">
+                        <figure class="post-image">
+                            <img src="https://i.imgur.com/TiWpWYF.jpg" alt="">
+                        </figure>
+                        <span class="post-overlay">
+                            <p>
+                                <span class="post-likes">150</span>
+                        <span class="post-comments">10</span>
+                        </p>
+                        </span>
+                    </a>
+                    <a href="" class="post six">
+                        <figure class="post-image">
+                            <img src="https://i.imgur.com/lbh70Kb.jpg" alt="">
+                        </figure>
+                        <span class="post-overlay">
+                            <p>
+                                <span class="post-likes">150</span>
+                        <span class="post-comments">10</span>
+                        </p>
+                        </span>
+                    </a>
+                    <div class="title three">
+                        <h1>No te debes perder</h1>
+                    </div>
+                    <a href="" class="post seven">
+                        <figure class="post-image">
+                            <img src="https://i.imgur.com/KRjLqaB.jpg" alt="">
+                        </figure>
+                        <span class="post-overlay">
+                            <p>
+                                <span class="post-likes">150</span>
+                        <span class="post-comments">10</span>
+                        </p>
+                        </span>
+                    </a>
+                    <a href="" class="post eigth">
+                        <figure class="post-image">
+                            <img src="https://i.imgur.com/sl1RRRw.jpg" alt="">
+                        </figure>
+                        <span class="post-overlay">
+                            <p>
+                                <span class="post-likes">150</span>
+                        <span class="post-comments">10</span>
+                        </p>
+                        </span>
+                    </a>
+                    <a href="" class="post nine">
+                        <figure class="post-image">
+                            <img src="https://i.imgur.com/0ZhwpAv.jpg" alt="">
+                        </figure>
+                        <span class="post-overlay">
+                            <p>
+                                <span class="post-likes">150</span>
+                        <span class="post-comments">10</span>
+                        </p>
+                        </span>
+                    </a>
+                </section>
+            </section>
+        </section>
+    </section>
+
+
+</body>
+
+</html>
